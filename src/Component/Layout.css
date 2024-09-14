@@ -1,0 +1,71 @@
+/* Layout.css */
+
+/* Navbar Styles */
+.MuiAppBar-root {
+    background-color: #080508 !important;
+}
+
+.MuiTypography-h6 {
+    color: #fff !important; 
+}
+
+/* Drawer Styles */
+.MuiDrawer-paper {
+    background-color: #2a2a2a !important; 
+}
+
+/* Nav Link Styles */
+.nav-link {
+    text-decoration: none; 
+    margin-top: 10px !important;
+}
+
+.MuiListItemButton-root {
+    transition: background-color 0.3s; 
+    margin-top: 10px !important;
+
+}
+
+.MuiListItemButton-root:hover {
+    background-color: #525151 !important; /* Hover background color */
+    color: black !important;
+    border-radius: 20px !important;
+    margin-top: 10px !important;
+}
+
+.MuiListItemText-primary {
+    color: #ffffff; /* Text color for list items */
+}
+
+/* Collapse Icon Styles */
+.MuiCollapse-root {
+    transition: max-height 0.3s ease-out; /* Smooth collapse transition */
+}
+
+/* Button Styles */
+.MuiIconButton-root {
+    color: #fff !important; /* Icon color */
+}
+
+
+#icon{
+    color: rgb(236, 53, 53) !important;
+    margin-left: 8px !important;
+    
+}
+
+#iconU{
+    color: rgb(236, 53, 53) !important;
+    margin-left: 8px !important;
+    
+}
+
+#iconD{
+    color: rgb(255, 255, 255) !important;
+    margin-left: 8px !important;
+    
+}
+
+.header-logo{
+   
+}
