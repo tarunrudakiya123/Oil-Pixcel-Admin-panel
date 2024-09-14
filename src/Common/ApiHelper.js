@@ -2,85 +2,83 @@ import axios from "axios";
 import GetIP from "./IP";
 
 class ApiHelper {
-    constructor() {
-        const IP = GetIP()
-        this.baseURL = "https://localhost:5100" ? "https://localhost:5100" : `https://${IP}:5100`
-    }
+  constructor() {
+    const IP = GetIP();
+    const defaultURL = `https://${IP}:5100`;
+    this.baseURL = process.env.REACT_APP_BACKEND_URL || defaultURL;
+  }
 
-    GetUser() {
-        return axios.get(`${this.baseURL}/admin/getuser`)
-    }
+  GetUser() {
+    return axios.get(`${this.baseURL}/admin/getuser`);
+  }
 
-    AdminLogin(userDetails) {
-        return axios.post(`${this.baseURL}/admin/login`, userDetails)
-    }
+  AdminLogin(userDetails) {
+    return axios.post(`${this.baseURL}/admin/login`, userDetails);
+  }
 
-    InserUser(userDetails) {
-        return axios.post(`${this.baseURL}/admin/adduser`, userDetails)
-    }
+  InserUser(userDetails) {
+    return axios.post(`${this.baseURL}/admin/adduser`, userDetails);
+  }
 
-    DeleteUser(id) {
-        return axios.delete(`${this.baseURL}/admin/dltuser/${id}`,)
-    }
+  DeleteUser(id) {
+    return axios.delete(`${this.baseURL}/admin/dltuser/${id}`);
+  }
 
-    UpdateUser(id, data) {
-        return axios.put(`${this.baseURL}/admin/upuser/${id}`, data)
-    }
+  UpdateUser(id, data) {
+    return axios.put(`${this.baseURL}/admin/upuser/${id}`, data);
+  }
 
-    OtpVerify(data) {
-        return axios.post(`${this.baseURL}/admin/verify`, data)
-    }
+  OtpVerify(data) {
+    return axios.post(`${this.baseURL}/admin/verify`, data);
+  }
 
-    FetchMedia() {
-        return axios.get(`${this.baseURL}/admin/showmedia`)
-    }
+  FetchMedia() {
+    return axios.get(`${this.baseURL}/admin/showmedia`);
+  }
 
-    //upload image--
-    UploadMedia(File) {
-        return axios.post(`${this.baseURL}/admin/upload`, File)
-    }
+  //upload image--
+  UploadMedia(File) {
+    return axios.post(`${this.baseURL}/admin/upload`, File);
+  }
 
-    
+  AddProduct(data) {
+    return axios.post(`${this.baseURL}/admin/insertproduct`, data);
+  }
 
-    AddProduct(data) {
-        return axios.post(`${this.baseURL}/admin/insertproduct`, data)
-    }
+  ProductDetails() {
+    return axios.get(`${this.baseURL}/admin/getproduct`);
+  }
 
-    ProductDetails() {
-        return axios.get(`${this.baseURL}/admin/getproduct`)
-    }
+  DeleteProductById(id) {
+    return axios.delete(`${this.baseURL}/admin/dltproduct/${id}`);
+  }
 
-    DeleteProductById(id) {
-        return axios.delete(`${this.baseURL}/admin/dltproduct/${id}`)
-    }
+  GetEditProductById(id) {
+    return axios.post(`${this.baseURL}/admin/editproduct/${id}`);
+  }
 
-    GetEditProductById(id) {
-        return axios.post(`${this.baseURL}/admin/editproduct/${id}`)
-    }
+  EditProductDetails(data, id) {
+    return axios.put(`${this.baseURL}/admin/updateproduct/${id}`, data);
+  }
 
-    EditProductDetails(data, id) {
-        return axios.put(`${this.baseURL}/admin/updateproduct/${id}`, data)
-    }
+  //Category---
 
-    //Category---
+  GetCategory() {
+    return axios.get(`${this.baseURL}/admin/getcategory`);
+  }
 
-    GetCategory() {
-        return axios.get(`${this.baseURL}/admin/getcategory`)
-    }
+  AddCategory(data) {
+    return axios.post(`${this.baseURL}/admin/addcategory`, data);
+  }
 
-    AddCategory(data) {
-        return axios.post(`${this.baseURL}/admin/addcategory`, data)
-    }
+  EditCategory(data, id) {
+    return axios.put(`${this.baseURL}/admin/updatecategory/${id}`, data);
+  }
 
-    EditCategory(data, id) {
-        return axios.put(`${this.baseURL}/admin/updatecategory/${id}`, data)
-    }
-
-    DeleteCategory(id) {
-        return axios.delete(`${this.baseURL}/admin/deletecategary/${id}`)
-    }
-
+  DeleteCategory(id) {
+    return axios.delete(`${this.baseURL}/admin/deletecategary/${id}`);
+  }
 }
 
-const apiHelper = new ApiHelper()
-export default apiHelper
+const apiHelper = new ApiHelper();
+export default apiHelper;
