@@ -2,78 +2,85 @@ import axios from "axios";
 
 class ApiHelper {
   constructor() {
-    this.baseURL = process.env.REACT_APP_BACKEND_URL
+    this.api = axios.create({
+      baseURL: process.env.REACT_APP_BACKEND_URL,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true, // Ensure cookies and credentials are sent
+    });
   }
 
+  // Example API methods using the axios instance
+
   GetUser() {
-    return axios.get(`${this.baseURL}/admin/getuser`);
+    return this.api.get(`/admin/getuser`);
   }
 
   AdminLogin(userDetails) {
-    return axios.post(`${this.baseURL}/admin/login`, userDetails);
+    return this.api.post(`/admin/login`, userDetails);
   }
 
   InserUser(userDetails) {
-    return axios.post(`${this.baseURL}/admin/adduser`, userDetails);
+    return this.api.post(`/admin/adduser`, userDetails);
   }
 
   DeleteUser(id) {
-    return axios.delete(`${this.baseURL}/admin/dltuser/${id}`);
+    return this.api.delete(`/admin/dltuser/${id}`);
   }
 
   UpdateUser(id, data) {
-    return axios.put(`${this.baseURL}/admin/upuser/${id}`, data);
+    return this.api.put(`/admin/upuser/${id}`, data);
   }
 
   OtpVerify(data) {
-    return axios.post(`${this.baseURL}/admin/verify`, data);
+    return this.api.post(`/admin/verify`, data);
   }
 
   FetchMedia() {
-    return axios.get(`${this.baseURL}/admin/showmedia`);
+    return this.api.get(`/admin/showmedia`);
   }
 
-  //upload image--
   UploadMedia(File) {
-    return axios.post(`${this.baseURL}/admin/upload`, File);
+    return this.api.post(`/admin/upload`, File);
   }
 
   AddProduct(data) {
-    return axios.post(`${this.baseURL}/admin/insertproduct`, data);
+    return this.api.post(`/admin/insertproduct`, data);
   }
 
   ProductDetails() {
-    return axios.get(`${this.baseURL}/admin/getproduct`);
+    return this.api.get(`/admin/getproduct`);
   }
 
   DeleteProductById(id) {
-    return axios.delete(`${this.baseURL}/admin/dltproduct/${id}`);
+    return this.api.delete(`/admin/dltproduct/${id}`);
   }
 
   GetEditProductById(id) {
-    return axios.post(`${this.baseURL}/admin/editproduct/${id}`);
+    return this.api.post(`/admin/editproduct/${id}`);
   }
 
   EditProductDetails(data, id) {
-    return axios.put(`${this.baseURL}/admin/updateproduct/${id}`, data);
+    return this.api.put(`/admin/updateproduct/${id}`, data);
   }
 
-  //Category---
+  // Category-related methods
 
   GetCategory() {
-    return axios.get(`${this.baseURL}/admin/getcategory`);
+    return this.api.get(`/admin/getcategory`);
   }
 
   AddCategory(data) {
-    return axios.post(`${this.baseURL}/admin/addcategory`, data);
+    return this.api.post(`/admin/addcategory`, data);
   }
 
   EditCategory(data, id) {
-    return axios.put(`${this.baseURL}/admin/updatecategory/${id}`, data);
+    return this.api.put(`/admin/updatecategory/${id}`, data);
   }
 
   DeleteCategory(id) {
-    return axios.delete(`${this.baseURL}/admin/deletecategary/${id}`);
+    return this.api.delete(`/admin/deletecategary/${id}`);
   }
 }
 
