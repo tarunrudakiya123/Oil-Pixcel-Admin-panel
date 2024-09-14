@@ -1,11 +1,8 @@
 import axios from "axios";
-import GetIP from "./IP";
 
 class ApiHelper {
   constructor() {
-    const IP = GetIP();
-    const defaultURL = `https://${IP}:5100`;
-    this.baseURL = process.env.REACT_APP_BACKEND_URL || defaultURL;
+    this.baseURL = process.env.REACT_APP_BACKEND_URL
   }
 
   GetUser() {
